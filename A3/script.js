@@ -60,7 +60,7 @@ var goToSlide = function(n , d)
 		 
 	}	
 	$("#numContainer button").removeClass("active");
-	$('#numContainer button:nth-of-type(" + n + ")').addClass("active");
+	$('#numContainer button:nth-of-type(' + n + ")").addClass("active");
 
   currentSlide = n;
 }
