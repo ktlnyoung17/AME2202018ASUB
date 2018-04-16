@@ -3,17 +3,17 @@
 <head>
 <script src='jquery-2.1.3.js'> </script>
 <style>
-	.clock{
-		width: 350px;
-		height: 350 px;
-		border: none;
-	    overflow: hidden;
-	    overflow-x: hidden;
-	    overflow-y: hidden;
-	    transform: scale(.1);
-	    transform-origin: 0px 0px;
-	    margin-bottom: -1px;
-	}
+  .clock{
+	width: 350px;
+	height: 350 px;
+	border: none;
+	overflow: hidden;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	transform: scale(.1);
+	transform-origin: 0px 0px;
+	margin-bottom: -1px;
+  }
   .tzCard{
     width: 100%;
     height: 50px;
@@ -48,6 +48,9 @@
   }
 </style>
 <script>
+    //var name = dataStore[n].name;
+    //var offset = dataStore[n].offset;
+	
 function aTZSelected(n){
   var name = dataStore[n].name;
   var offset = dataStore[n].offset;
@@ -60,16 +63,21 @@ function aTZSelected(n){
   $("#theList .tzCard").removeClass("active");
   $("#theList .tzCard:nth-of-type(" + (n+1) + ")").addClass("active");
 }
-
+  
   var dataStore = [];
-  var start = function(){
+  var start = function(n){
     if(dataStore.length == 0){
-      document.getElementById("theList").innerHTML = "No stored timezones. Add some!"
+	  
+	  document.getElementById("theList").innerHTML = "No stored timezones. Add some!"
       return;
     }
     var markup = "";
     for(var i = 0; i < dataStore.length; i++){
-        markup +="<iframe class='clock' src='./embedclock.html#" + offset + "'></iframe>" + "<button class='tzCard' onclick='aTZSelected(" + i + ")'>" + dataStore[i].name + "</button>";
+  	   
+	    //var name = dataStore[n].name;
+  	    //var offset = dataStore[n].offset;
+      
+        markup += "<button class='tzCard' onclick='aTZSelected(" + i + ")'>" + "<iframe class='clock' src='./embedclock.html#'</iframe>"+ offset + "'>" + dataStore[i].name + "</button>";
     }
     console.log(markup);
     document.getElementById("theList").innerHTML = markup;
