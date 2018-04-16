@@ -7,6 +7,18 @@
 <meta name='viewport' content-width="device-width" user-scalable='no' initial-scale='1' maximum-scale='1'>
 
 <style>
+	.3{
+		font-size: 12pt;
+	}
+	.5{
+		font-size: 15pt;
+	}
+	.8{
+		font-size: 20pt;
+	}
+	.lots{
+		font-size: 24pt;
+	}
 .touch #cloud span:active, .mouse #cloud span:hover{
   background-color: black;
   color: white;
@@ -204,7 +216,9 @@ function generateCloud(data)
 var allWords = [];
 var wordCount = {}
    allWords = data.match(/\b\w+\b/g);   //get all words in the document
-   
+   if (wordCount <= 3){
+   	 $("#cloud").addClass("5");
+   }
    for(var i = 0; i < allWords.length; i = i + 1){
       allWords[i] = allWords[i].toLowerCase();
       var num = allWords[i];
@@ -217,8 +231,9 @@ var wordCount = {}
 
    var output = "";
    for(var i = 0; i < theWords.length; i = i + 1){
-     // code here  --- us the wordCount object to generate a word cloud of words that occur more than once.
-     if(wordCount[theWords[i]] >1){ //check if the word occurs more than once.
+     // code here  --- use the wordCount object to generate a word cloud of words that occur more than once.
+	   
+	 if(wordCount[theWords[i]] >1){ //check if the word occurs more than once.
        output = output + "<span> " + theWords[i] + "</span>";
      }
    }
