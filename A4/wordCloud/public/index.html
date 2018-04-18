@@ -220,7 +220,8 @@ var wordCount = {}
      // code here  --- use the wordCount object to generate a word cloud of words that occur more than once.
 	   
 	 if(wordCount[theWords[i]] >1){ //check if the word occurs more than once.
-       output = output + "<span style='font-size: 12 " + wordCount[theWords['']] + "'> " + theWords[i] + "</span>";
+		 var fs = 12+ 2*wordCount[theWords[i]]
+       output = output + "<span style='font-size:" + fs + "px'> " + theWords[i] + "</span>";
      }
    }
 
