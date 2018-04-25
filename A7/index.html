@@ -1,94 +1,156 @@
 <html>
 
 <head>
+
 <script src='jquery-2.1.3.js'> </script>
+<link rel="stylesheet" href="animate.min.css">
+
 <style>
-  .clock{
-	width: 350px;
-	height: 350 px;
-	border: none;
-	overflow: hidden;
-	overflow-x: hidden;
-	overflow-y: hidden;
-	transform: scale(.1);
-	transform-origin: 0px 0px;
-	margin-bottom: -1px;
-  }
-  .tzCard{
-    width: 100%;
-    height: 50px;
-    background: none;
-    border: none;
-    box-shadow: 0px 0px 1px;
-  }
-  body{
-    margin: 0px;
-  }
-  #timezoneSelection{
-    position: fixed;
-    min-width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,.5);
-    padding: 30%;
-    display: none;
-  }
-  #theListWraper{
-    width: 250px;
-    float: left;
-    height: 100%;
-    background: lightgray;
-  }
-  #theSelectedWraper{
-    width: calc(100% - 250px);
-    float: right;
-    height: 100%;
-  }
-  .active{
-    background: gold;
-  }
+	.aniCard{
+    	width: 100%;
+    	height: 50px;
+    	background: none;
+    	border: none;
+    	box-shadow: 0px 0px 1px;
+	}
+  	
+	#target{
+		-webkit-animation-duration: 1s;
+		-webkit-animation-delay: 0s;
+		-webkit-animation-iteration-count: infinite;
+		animation-delay: 0s;
+		animation-duration: 1s;
+		animation-iteration-count: infinite;
+	}
+	
+	body{
+    	margin: 0px;
+	}
+	
+	#theListWraper{
+		width: 300px;
+		float: left;
+		height: 3880px;
+		background: lightgray;	
+	}
+	
+	#theSelectedWraper{
+    	width: 400px;
+		height: 400px;
+   		float: right;
+		position: absolute;
+		margin: 5% 35% 20% 40%;
+  	}
+	
+	.active{
+    	background: gold;
+  	}
 </style>
+
 <script>
     //var name = dataStore[n].name;
     //var offset = dataStore[n].offset;
 	
-function aTZSelected(n){
-  var name = dataStore[n].name;
-  var offset = dataStore[n].offset;
-  
-  var markup = "<h1>" + name + "</h1>"+
-      "<iframe style='width: 100%;height: 500px;border: none;' src='./embedclock.html#" + offset + "'>"
-      
-  document.getElementById("theSelectedWraper").innerHTML = markup;
+function aniSelected(selected, n) {
+	var markup = "<div class='animated infinite " + selected + "' id='target' 	style='width:400px;height:400px;background-color:red;'></div>"
+	document.getElementById("theSelectedWraper").innerHTML = markup;
+	$(".aniCard").removeClass("active");
+	$(".aniCard:nth-of-type(" + n + ")").addClass("active");
 
-  $("#theList .tzCard").removeClass("active");
-  $("#theList .tzCard:nth-of-type(" + (n+1) + ")").addClass("active");
 }
-  
-  var dataStore = [];
-  var start = function(){
-  
-   
-    }
 
-  }
-
-
-  var bounce = function(){
-    
-  }
+var start = function(){
+	aniSelected('', 1);
+}
 
 </script>
 </head>
 
 <body onload='start()'>
   <div id='theListWraper'>
-    <h1> Animations <h1>
-    <button onclick='bounce()'> Bounce </button>
-    <div id='theList'> </div>
+    <h1> Animate.css <h1>
+    <div id='theList'>
+		<button class='anicard' onclick="aniSelected('bounce', 1)"> Bounce </button>
+		<button class='anicard' onclick="aniSelected('flash', 2)"> Flash </button>
+		<button class='anicard' onclick="aniSelected('pulse', 3)"> Pulse </button>
+		<button class='anicard' onclick="aniSelected('rubberBand', 4)"> Rubber Band </button>
+		<button class='anicard' onclick="aniSelected('shake', 5)"> Shake </button>
+		<button class='anicard' onclick="aniSelected('headShake', 6)"> Head Shake </button>
+		<button class='anicard' onclick="aniSelected('swing', 7)"> Swing </button>
+		<button class='anicard' onclick="aniSelected('tada', 8)"> Tada </button>
+		<button class='anicard' onclick="aniSelected('wobble', 9)"> Wobble </button>
+		<button class='anicard' onclick="aniSelected('jello', 10)"> Jello </button>
+		<button class='anicard' onclick="aniSelected('bounceIn', 11)"> Bounce In </button>
+		<button class='anicard' onclick="aniSelected('bounceInDown', 12)"> Bounce In Down </button>
+		<button class='anicard' onclick="aniSelected('bounceInLeft', 13)"> Bounce In Left </button>
+		<button class='anicard' onclick="aniSelected('bounceInRight', 14)"> Bounce In Right </button>
+		<button class='anicard' onclick="aniSelected('bounceInUp', 15)"> Bounce In Up</button>
+		<button class='anicard' onclick="aniSelected('bounceOut', 16)"> Bounce Out </button>
+		<button class='anicard' onclick="aniSelected('bounceOutDown', 17)"> Bounce Out Down </button>
+		<button class='anicard' onclick="aniSelected('bounceOutLeft', 18)"> Bounce Out Left </button>
+		<button class='anicard' onclick="aniSelected('bounceOutRight', 19)"> Bounce Out Right </button>
+		<button class='anicard' onclick="aniSelected('bounceOutUp' 20)"> Bounce Out Up</button>
+		<button class='anicard' onclick="aniSelected('fadeIn', 21)"> Fade In </button>
+		<button class='anicard' onclick="aniSelected('fadeInDown', 22)"> Fade In Down </button>
+		<button class='anicard' onclick="aniSelected('fadeInDownBig', 23)"> Fade In Down Big </button>
+		<button class='anicard' onclick="aniSelected('fadeInLeft', 24)"> Fade In Left </button>
+		<button class='anicard' onclick="aniSelected('fadeInLeftBig', 25)"> Fade In Left Big </button>
+		<button class='anicard' onclick="aniSelected('fadeInRight', 26)"> Fade In Right </button>
+		<button class='anicard' onclick="aniSelected('fadeInRightBig', 27)"> Fade In Right Big </button>
+		<button class='anicard' onclick="aniSelected('fadeInUp', 28)"> Fade In Up </button>
+		<button class='anicard' onclick="aniSelected('fadeInUpBig', 29)"> Fade In Up Big </button>
+		<button class='anicard' onclick="aniSelected('fadeOut', 30)"> Fade Out </button>
+		<button class='anicard' onclick="aniSelected('fadeOutDown', 31)"> Fade Out Down </button>
+		<button class='anicard' onclick="aniSelected('fadeOutDownBig', 32)"> Fade Out Down Big </button>
+		<button class='anicard' onclick="aniSelected('fadeOutLeft', 33)"> Fade Out Left </button>
+		<button class='anicard' onclick="aniSelected('fadeOutLeftBig', 34)"> Fade Out Left Big </button>
+		<button class='anicard' onclick="aniSelected('fadeOutRight', 35)"> Fade Out Right </button>
+		<button class='anicard' onclick="aniSelected('fadeOutRightBig', 36)"> Fade Out Right Big </button>
+		<button class='anicard' onclick="aniSelected('fadeOutUp', 37)"> Fade Out Up </button>
+		<button class='anicard' onclick="aniSelected('fadeOutUpBig', 38)"> Fade Out Up Big </button>
+		<button class='anicard' onclick="aniSelected('flipInX', 39)"> Flip In X </button>
+		<button class='anicard' onclick="aniSelected('flipInY', 40)"> Flip In Y </button>
+		<button class='anicard' onclick="aniSelected('flipOutX', 41)>" Flip Out X </button>
+		<button class='anicard' onclick="aniSelected('flipOutY', 42)"> Flip Out Y </button>
+		<button class='anicard' onclick="aniSelected('lightSpeedIn', 43)"> Light Speed In </button>
+		<button class='anicard' onclick="aniSelected('lightSpeedOut', 44)"> Light Speed Out </button>
+		<button class='anicard' onclick="aniSelected('rotateIn', 45)"> Rotate In </button>
+		<button class='anicard' onclick="aniSelected('rotateInDownLeft', 46)"> Rotate In Down Left </button>
+		<button class='anicard' onclick="aniSelected('rotateInDownRight', 47)"> Rotate In Down Right </button>
+		<button class='anicard' onclick="aniSelected('rotateInUpLeft', 48)"> Rotate In Up Left </button>
+		<button class='anicard' onclick="aniSelected('rotateInUpRight', 49)"> Rotate In Up Right </button>
+		<button class='anicard' onclick="aniSelected('rotateOut', 50)"> Rotate Out </button>
+		<button class='anicard' onclick="aniSelected('rotateOutDownLeft', 51)"> Rotate Out Down Left </button>
+		<button class='anicard' onclick="aniSelected('rotateOutDownRight', 52)"> Rotate Out Down Right </button>
+		<button class='anicard' onclick="aniSelected('rotateOutUpLeft', 53)"> Rotate Out Up Left </button>
+		<button class='anicard' onclick="aniSelected('rotateOutUpRight', 54)"> Rotate Out Up Right </button>
+		<button class='anicard' onclick="aniSelected('hinge', 55)"> Hinge </button>
+		<button class='anicard' onclick="aniSelected('jackInTheBox', 56)"> Jack In The Box </button>
+		<button class='anicard' onclick="aniSelected('rollIn', 57)"> Roll In </button>
+		<button class='anicard' onclick="aniSelected('rollOut', 58)"> Roll Out </button>
+		<button class='anicard' onclick="aniSelected('zoomIn', 59)"> Zoom In </button>
+		<button class='anicard' onclick="aniSelected('zoomInDown', 60)"> Zoom In Down </button>
+		<button class='anicard' onclick="aniSelected('zoomInLeft', 61)"> Zoom In Left </button>
+		<button class='anicard' onclick="aniSelected('zoomInRight', 62)"> Zoom In Right </button>
+		<button class='anicard' onclick="aniSelected('zoomInUp', 63)"> Zoom In Up </button>
+		<button class='anicard' onclick="aniSelected('zoomOut', 64)"> Zoom Out </button>
+		<button class='anicard' onclick="aniSelected('zoomOutDown', 65)"> Zoom Out Down </button>
+		<button class='anicard' onclick="aniSelected('zoomOutLeft', 66)"> Zoom Out Left </button>
+		<button class='anicard' onclick="aniSelected('zoomOutRight', 67)"> Zoom Out Right </button>
+		<button class='anicard' onclick="aniSelected('zoomOutUp', 68)"> Zoom Out Up </button>
+		<button class='anicard' onclick="aniSelected('slideInDown', 69)"> Slide In Down </button>
+		<button class='anicard' onclick="aniSelected('slideInLeft', 70)"> Slide In Left </button>
+		<button class='anicard' onclick="aniSelected('slideInRight', 71)"> Slide In Right </button>
+		<button class='anicard' onclick="aniSelected('slideInUp', 72)"> Slide In Up </button>
+		<button class='anicard' onclick="aniSelected('slideOutDown', 73)"> Slide Out Down </button>
+		<button class='anicard' onclick="aniSelected('slideOutLeft', 74)"> Slide Out Left </button>
+		<button class='anicard' onclick="aniSelected('slideOutRight', 75)"> Slide Out Right </button>
+		<button class='anicard' onclick="aniSelected('slideOutUp', 76)"> Slide Out Up </button>
   </div>
-  <div id='theSelectedWraper'>
-  	<div id='rectangle'>
-  </div>
-</body>
+</div>
 
+<div id='theSelectedWraper'>
+</div>
+
+</body>
 </html>
